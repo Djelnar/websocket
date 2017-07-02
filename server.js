@@ -56,14 +56,13 @@ wss.on('connection', (e) => {
 
 
 
-router.get('/', ctx => {
-    ctx.render('index')
+router.get('/', async ctx => {
+    await ctx.render('index')
 })
 
 server
     .use(views(path.join(__dirname, '/views'), { extension: 'ejs' }))
     .use(serve('static'))
-    .use(serve('uploads'))
     // .use(logger('tiny'))
     .use(router.routes())
     .listen(1338, () => {
