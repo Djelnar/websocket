@@ -38,7 +38,7 @@ wss.on('connection', (e) => {
         }
         store.clients.forEach((el, idx, arr) => {
             try {
-                el.send(JSON.stringify(store.balls))
+                el.send(JSON.stringify(_.compact(store.balls)))
             } catch(err) {
                 console.log('Websocket error: %s', err);
             }
